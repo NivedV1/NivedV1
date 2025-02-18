@@ -1,7 +1,7 @@
 - 👋 Hi, I’m Nived
 - 👀 I’m interested in ...
 - 🌱 I’m currently learning ...
--N❤️
+- N❤️
 
 <!---
 NivedV1/NivedV1 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
