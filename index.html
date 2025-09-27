@@ -4,151 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automatic Image Slideshow</title>
-    
-    <style>
-        /* * GLOBAL STYLES & BACKGROUND
-         * Equivalent to: font-sans bg-gradient-to-br from-gray-50 via-indigo-100 to-purple-200 min-h-screen
-         */
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 1rem; /* p-4 */
-            background-image: linear-gradient(to bottom right, #f9fafb, #e0e7ff, #ddd6fe);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Desktop Padding */
-        @media (min-width: 768px) {
-            body {
-                padding: 2rem; /* md:p-8 */
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
             }
         }
-
-        /* * CONTAINER 
-         * Equivalent to: max-w-4xl mx-auto
-         */
-        .container {
-            max-width: 56rem; /* max-w-4xl */
-            margin: 0 auto; /* mx-auto */
-            width: 100%;
-        }
-
-        /* * HEADER 
-         * Equivalent to: text-3xl font-bold text-gray-800 mb-6 text-center
-         */
-        .header {
-            font-size: 1.875rem; 
-            font-weight: 700; 
-            color: #1f2937; 
-            margin-bottom: 1.5rem; 
-            text-align: center;
-        }
-
-        /* * SLIDESHOW CONTAINER 
-         * Equivalent to: rounded-xl overflow-hidden shadow-2xl bg-gray-900
-         */
-        .slideshow-box {
+    </script>
+    <style>
+        /* Custom styles for the overlay and positioning */
+        .slider-container {
             position: relative;
             /* Using CSS variable to dynamically set the aspect ratio. Default is 16/9. */
             aspect-ratio: var(--slide-ratio, 16 / 9); 
             max-height: 80vh;
             /* Smooth transition for the container size change */
             transition: aspect-ratio 0.5s ease-in-out; 
-            
-            /* Aesthetic Styling */
-            border-radius: 0.75rem; 
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            background-color: #1f2937;
-        }
-        
-        .slides-wrapper {
-            width: 100%;
-            height: 100%;
-            position: relative;
         }
 
-        /* * IMAGE STYLING 
-         */
+        /* Image styling for smooth transitions */
         .slide-image {
-            /* Positioning */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            
             /* Fade and slow zoom animation */
             transition: opacity 1s ease-in-out, transform 4s ease-in-out;
             opacity: 0;
             transform: scale(1.05); /* Start slightly zoomed for the 'zoom-out' effect */
             display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .slide-image.active {
             opacity: 1;
             transform: scale(1.00); /* Zoom back to normal size over 4s */
         }
-        
-        /* * DOWNLOAD BUTTON STYLES
-         */
-        .download-container {
-            text-align: center;
-            margin-top: 2rem; /* mt-8 */
-        }
-        
-        /* Equivalent to the indigo button classes */
-        .download-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.75rem 1.5rem; /* px-6 py-3 */
-            border: 1px solid transparent; 
-            font-size: 1rem; 
-            font-weight: 500; 
-            border-radius: 0.375rem; 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* shadow-lg */
-            color: white;
-            background-color: #4f46e5; /* bg-indigo-600 */
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.15s ease-in-out;
-        }
-
-        .download-button:hover {
-            background-color: #4338ca; /* hover:bg-indigo-700 */
-            transform: scale(1.05); /* transform hover:scale-105 */
-        }
-        
-        .download-button svg {
-            margin-right: 0.5rem;
-        }
     </style>
 </head>
-<body class="font-sans">
+<body class="bg-gray-100 font-sans p-4 md:p-8 bg-gradient-to-br from-gray-50 via-indigo-100 to-purple-200 min-h-screen">
 
-    <div class="container">
+    <div class="max-w-4xl mx-auto">
         <!-- Header -->
-        <h1 class="header">Featured Destinations Gallery (Automatic)</h1>
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">HEY NANDOOSE💞 </h1>
 
         <!-- Slideshow Container -->
-        <div id="slideshow" class="slider-container slideshow-box">
+        <div id="slideshow" class="slider-container rounded-xl overflow-hidden shadow-2xl bg-gray-900">
             
             <!-- Slides (Dynamically populated by JS) -->
-            <div id="slides-wrapper" class="slides-wrapper">
+            <div id="slides-wrapper" class="w-full h-full relative">
                 <!-- Image elements will be inserted here by JavaScript -->
             </div>
 
+            <!-- NOTE: Image Caption Overlay has been removed -->
         </div>
 
         <!-- Download Button Added Here -->
-        <div class="download-container">
+        <div class="text-center mt-8">
             <a 
                 href="./download.zip" 
                 download
-                class="download-button"
+                class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out transform hover:scale-105"
             >
                 <!-- Inline SVG for a clean download icon (Lucide icon) -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
@@ -177,11 +97,16 @@
             { url: './images/13.JPG', caption: 'Image 13' },
             { url: './images/14.JPG', caption: 'Image 14' },
             { url: './images/15.JPG', caption: 'Image 15' }
+            { url: './images/16.JPG', caption: 'Image 16' },
+            { url: './images/17.JPG', caption: 'Image 17' },
+            { url: './images/18.JPG', caption: 'Image 18' },
+            { url: './images/19.JPG', caption: 'Image 19' },
+            { url: './images/20.JPG', caption: 'Image 20' },
         ];
 
         let currentSlideIndex = 0;
         let autoplayInterval;
-        const intervalTime = 4000; // 4 seconds 
+        const intervalTime = 4000; // 4 seconds (changed from 5s in previous response)
 
         const slidesWrapper = document.getElementById('slides-wrapper');
         const sliderContainer = document.getElementById('slideshow');
@@ -197,8 +122,7 @@
                 const img = document.createElement('img');
                 img.src = slide.url;
                 img.alt = slide.caption;
-                // Use custom CSS classes defined in the <style> block
-                img.classList.add('slide-image'); 
+                img.classList.add('slide-image', 'absolute', 'inset-0');
                 img.dataset.index = index;
                 // Add a fallback for image loading errors
                 img.onerror = function() {
