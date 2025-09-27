@@ -46,11 +46,11 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-purple-400 via-pink-300 to-yellow-200 font-sans p-4 md:p-8">
+<body class="bg-gray-100 font-sans p-4 md:p-8 bg-gradient-to-br from-gray-50 via-indigo-100 to-purple-200 min-h-screen">
 
     <div class="max-w-4xl mx-auto">
         <!-- Header -->
-        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">HEY NANDOOSE💞 <h1>
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">HEY NANDOOSE💞 </h1>
 
         <!-- Slideshow Container -->
         <div id="slideshow" class="slider-container rounded-xl overflow-hidden shadow-2xl bg-gray-900">
@@ -102,12 +102,11 @@
             { url: './images/18.JPG', caption: 'Image 18' },
             { url: './images/19.JPG', caption: 'Image 19' },
             { url: './images/20.JPG', caption: 'Image 20' },
-
         ];
 
         let currentSlideIndex = 0;
         let autoplayInterval;
-        const intervalTime = 4000; // 5 seconds
+        const intervalTime = 4000; // 4 seconds (changed from 5s in previous response)
 
         const slidesWrapper = document.getElementById('slides-wrapper');
         const sliderContainer = document.getElementById('slideshow');
