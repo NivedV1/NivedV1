@@ -21,8 +21,11 @@
         /* Custom styles for the overlay and positioning */
         .slider-container {
             position: relative;
-            aspect-ratio: 16 / 9; /* Standard widescreen ratio */
+            /* Using CSS variable to dynamically set the aspect ratio. Default is 16/9. */
+            aspect-ratio: var(--slide-ratio, 16 / 9); 
             max-height: 80vh;
+            /* Smooth transition for the container size change */
+            transition: aspect-ratio 0.5s ease-in-out; 
         }
 
         /* Image styling for smooth transitions */
@@ -97,8 +100,7 @@
 
         const slidesWrapper = document.getElementById('slides-wrapper');
         const captionElement = document.getElementById('slide-caption');
-        
-        // Removed references to prevBtn, nextBtn, and indicatorsContainer
+        const sliderContainer = document.getElementById('slideshow');
 
         /**
          * Renders the HTML for the slide images.
@@ -113,9 +115,10 @@
                 img.dataset.index = index;
                 // Add a fallback for image loading errors
                 img.onerror = function() {
-                    // Note: Since these are local files, if the file doesn't exist, this error handler will fire.
                     console.error(`Error loading image: ${slide.url}`);
                     this.src = 'https://placehold.co/1280x720/6b7280/ffffff?text=Image+Missing';
+                    // Use a default ratio if image fails to load
+                    slide.ratio = 16 / 9; 
                 };
                 slidesWrapper.appendChild(img);
             });
@@ -129,8 +132,13 @@
             currentSlideIndex = (index + SLIDES.length) % SLIDES.length;
 
             const allImages = slidesWrapper.querySelectorAll('.slide-image');
+            const activeSlide = SLIDES[currentSlideIndex];
 
-            // 1. Update Images and Animation
+            // 1. Dynamically update the container's aspect ratio (frame size)
+            // The aspect-ratio is set to 16/9 if the ratio property is missing (e.g., if loading failed)
+            sliderContainer.style.setProperty('--slide-ratio', `${activeSlide.ratio || (16 / 9)}`);
+
+            // 2. Update Images and Animation
             allImages.forEach(img => {
                 const isActive = parseInt(img.dataset.index) === currentSlideIndex;
                 img.classList.remove('active');
@@ -141,10 +149,10 @@
                 }
             });
 
-            // 2. Update Caption
+            // 3. Update Caption
             captionElement.style.opacity = '0'; // Start fade out
             setTimeout(() => {
-                captionElement.textContent = SLIDES[currentSlideIndex].caption;
+                captionElement.textContent = activeSlide.caption;
                 captionElement.style.opacity = '1'; // Fade back in
             }, 300); // Shorter delay than image transition for staggered effect
         }
@@ -167,19 +175,46 @@
         }
 
         /**
+         * Preloads images and calculates their natural aspect ratio (width / height).
+         * @returns {Promise<void>}
+         */
+        function loadImagesAndGetRatios() {
+            const ratioPromises = SLIDES.map((slide) => {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        // Calculate and store ratio directly in the slide object
+                        slide.ratio = img.naturalWidth / img.naturalHeight;
+                        resolve();
+                    };
+                    img.onerror = () => {
+                        // Fallback to a default ratio (16:9) if image fails to load
+                        slide.ratio = 16 / 9; 
+                        resolve();
+                    };
+                    img.src = slide.url;
+                });
+            });
+
+            return Promise.all(ratioPromises);
+        }
+
+
+        /**
          * Initialization
          */
         function initSlider() {
             if (SLIDES.length === 0) return;
 
-            renderSlides();
-            showSlide(currentSlideIndex);
-
-            // Start the automatic rotation
-            startAutoplay();
+            // Wait for all image ratios to be calculated before starting the slideshow
+            loadImagesAndGetRatios().then(() => {
+                renderSlides();
+                showSlide(currentSlideIndex);
+                startAutoplay();
+            });
         }
 
         window.onload = initSlider;
     </script>
 </body>
-</html>
+</html> #hi
