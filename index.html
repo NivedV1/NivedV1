@@ -60,38 +60,27 @@
                 <!-- Image elements will be inserted here by JavaScript -->
             </div>
 
-            <!-- Image Caption Overlay (Text) -->
-            <div id="caption-overlay" class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent text-white">
-                <p id="slide-caption" class="text-xl font-semibold transition-opacity duration-700"></p>
-            </div>
-
-            <!-- NOTE: Navigation buttons and indicators have been removed -->
+            <!-- NOTE: Image Caption Overlay has been removed -->
         </div>
     </div>
 
     <script>
         const SLIDES = [
-            { url: './images/IMG_1231.JPG', caption: 'Image 1' },
-            { url: './images/IMG_1232.JPG', caption: 'Image 2' },
-            { url: './images/IMG_1233.JPG', caption: 'Image 3' },
-            { url: './images/IMG_1234.JPG', caption: 'Image 4' },
-            { url: './images/IMG_1235.JPG', caption: 'Image 5' },
-            { url: './images/IMG_1236.JPG', caption: 'Image 6' },
-            { url: './images/IMG_1237.JPG', caption: 'Image 7' },
-            { url: './images/IMG_1238.JPG', caption: 'Image 8' },
-            { url: './images/IMG_1239.JPG', caption: 'Image 9' },
-            { url: './images/IMG_1240.JPG', caption: 'Image 10' },
-            { url: './images/IMG_1241.JPG', caption: 'Image 11' },
-            { url: './images/IMG_1242.JPG', caption: 'Image 12' },
-            { url: './images/IMG_1243.JPG', caption: 'Image 13' },
-            { url: './images/IMG_1244.JPG', caption: 'Image 14' },
-            { url: './images/IMG_1245.JPG', caption: 'Image 15' },
-            { url: './images/IMG_1246.JPG', caption: 'Image 16' },
-            { url: './images/IMG_1247.JPG', caption: 'Image 17' },
-            { url: './images/IMG_1248.JPG', caption: 'Image 18' },
-            { url: './images/IMG_1249.JPG', caption: 'Image 19' },
-            { url: './images/IMG_1250.JPG', caption: 'Image 20' },
-            { url: './images/IMG_1251.JPG', caption: 'Image 21' }
+            { url: './images/1.JPG', caption: 'Image 1' },
+            { url: './images/2.JPG', caption: 'Image 2' },
+            { url: './images/3.JPG', caption: 'Image 3' },
+            { url: './images/4.JPG', caption: 'Image 4' },
+            { url: './images/5.JPG', caption: 'Image 5' },
+            { url: './images/6.JPG', caption: 'Image 6' },
+            { url: './images/7.JPG', caption: 'Image 7' },
+            { url: './images/8.JPG', caption: 'Image 8' },
+            { url: './images/9.JPG', caption: 'Image 9' },
+            { url: './images/10.JPG', caption: 'Image 10' },
+            { url: './images/11.JPG', caption: 'Image 11' },
+            { url: './images/12.JPG', caption: 'Image 12' },
+            { url: './images/13.JPG', caption: 'Image 13' },
+            { url: './images/14.JPG', caption: 'Image 14' },
+            { url: './images/15.JPG', caption: 'Image 15' }
         ];
 
         let currentSlideIndex = 0;
@@ -99,8 +88,9 @@
         const intervalTime = 5000; // 5 seconds
 
         const slidesWrapper = document.getElementById('slides-wrapper');
-        const captionElement = document.getElementById('slide-caption');
         const sliderContainer = document.getElementById('slideshow');
+        
+        // Removed reference to captionElement
 
         /**
          * Renders the HTML for the slide images.
@@ -149,12 +139,7 @@
                 }
             });
 
-            // 3. Update Caption
-            captionElement.style.opacity = '0'; // Start fade out
-            setTimeout(() => {
-                captionElement.textContent = activeSlide.caption;
-                captionElement.style.opacity = '1'; // Fade back in
-            }, 300); // Shorter delay than image transition for staggered effect
+            // Removed: Caption update logic
         }
 
         /**
@@ -217,4 +202,4 @@
         window.onload = initSlider;
     </script>
 </body>
-</html> #hi
+</html>
