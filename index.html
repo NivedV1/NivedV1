@@ -68,22 +68,27 @@
 
     <script>
         const SLIDES = [
-            {
-                url: 'https://placehold.co/1280x720/1d4ed8/ffffff?text=Mountain+View',
-                caption: 'The Majestic Peaks of the Rockies'
-            },
-            {
-                url: 'https://placehold.co/1280x720/059669/ffffff?text=Forest+Trail',
-                caption: 'A Serene Morning on the Forest Trail'
-            },
-            {
-                url: 'https://placehold.co/1280x720/ef4444/ffffff?text=City+Lights',
-                caption: 'Vibrant Cityscape at Dusk'
-            },
-            {
-                url: 'https://placehold.co/1280x720/f97316/ffffff?text=Ocean+Sunset',
-                caption: 'Breathtaking Sunset over the Pacific Ocean'
-            }
+            { url: './images/IMG_1231.jpg', caption: 'Image 1' },
+            { url: './images/IMG_1232.jpg', caption: 'Image 2' },
+            { url: './images/IMG_1233.jpg', caption: 'Image 3' },
+            { url: './images/IMG_1234.jpg', caption: 'Image 4' },
+            { url: './images/IMG_1235.jpg', caption: 'Image 5' },
+            { url: './images/IMG_1236.jpg', caption: 'Image 6' },
+            { url: './images/IMG_1237.jpg', caption: 'Image 7' },
+            { url: './images/IMG_1238.jpg', caption: 'Image 8' },
+            { url: './images/IMG_1239.jpg', caption: 'Image 9' },
+            { url: './images/IMG_1240.jpg', caption: 'Image 10' },
+            { url: './images/IMG_1241.jpg', caption: 'Image 11' },
+            { url: './images/IMG_1242.jpg', caption: 'Image 12' },
+            { url: './images/IMG_1243.jpg', caption: 'Image 13' },
+            { url: './images/IMG_1244.jpg', caption: 'Image 14' },
+            { url: './images/IMG_1245.jpg', caption: 'Image 15' },
+            { url: './images/IMG_1246.jpg', caption: 'Image 16' },
+            { url: './images/IMG_1247.jpg', caption: 'Image 17' },
+            { url: './images/IMG_1248.jpg', caption: 'Image 18' },
+            { url: './images/IMG_1249.jpg', caption: 'Image 19' },
+            { url: './images/IMG_1250.jpg', caption: 'Image 20' },
+            { url: './images/IMG_1251.jpg', caption: 'Image 21' }
         ];
 
         let currentSlideIndex = 0;
@@ -108,7 +113,9 @@
                 img.dataset.index = index;
                 // Add a fallback for image loading errors
                 img.onerror = function() {
-                    this.src = 'https://placehold.co/1280x720/6b7280/ffffff?text=Image+Error';
+                    // Note: Since these are local files, if the file doesn't exist, this error handler will fire.
+                    console.error(`Error loading image: ${slide.url}`);
+                    this.src = 'https://placehold.co/1280x720/6b7280/ffffff?text=Image+Missing';
                 };
                 slidesWrapper.appendChild(img);
             });
@@ -176,4 +183,3 @@
     </script>
 </body>
 </html>
-
