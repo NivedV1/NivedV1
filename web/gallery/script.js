@@ -4,19 +4,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add your image URLs here. You can add as many as you want.
     const imageUrls = [
-        '/web/gallery/1.jpg',
-        '/web/gallery/2.jpg',
-        '/web/gallery/3.jpg',
-        '/web/gallery/4.jpg',
-        '/web/gallery/5.jpg',
-        '/web/gallery/6.jpg',
-        '/web/gallery/7.jpg',
-        '/web/gallery/8.jpg',
-        '/web/gallery/9.jpg',
-        '/web/gallery/10.jpg',
-        '/web/gallery/11.jpg',
-        '/web/gallery/12.jpg',
-        '/web/gallery/13.jpg',
+        '/web/gallery/1.JPG',
+        '/web/gallery/2.JPG',
+        '/web/gallery/3.JPG',
+        '/web/gallery/4.JPG',
+        '/web/gallery/5.JPG',
+        '/web/gallery/6.JPG',
+        '/web/gallery/7.JPG',
+        '/web/gallery/8.JPG',
+        '/web/gallery/9.JPG',
+        '/web/gallery/10.JPG',
+        '/web/gallery/11.JPG',
+        '/web/gallery/12.JPG',
+        '/web/gallery/13.JPG',
 
         // Add more image URLs as needed
     ];
