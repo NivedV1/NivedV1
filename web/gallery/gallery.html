@@ -1,22 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Collage Gallery</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masonry Collage (Lazy Loading)</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: #000;
+    color: #fff;
+    font-family: sans-serif;
+    overflow-y: scroll;
+  }
+
+  /* Masonry layout using CSS columns */
+  .collage {
+    column-count: 5;
+    column-gap: 10px;
+    padding: 10px;
+  }
+
+  /* Each image fits into column flow */
+  .collage img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: #111;
+    object-fit: contain;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .collage img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+  }
+
+  /* Responsive behavior */
+  @media (max-width: 1400px) {
+    .collage { column-count: 4; }
+  }
+
+  @media (max-width: 1000px) {
+    .collage { column-count: 3; }
+  }
+
+  @media (max-width: 700px) {
+    .collage { column-count: 2; }
+  }
+
+  @media (max-width: 500px) {
+    .collage { column-count: 1; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="gallery-container">
-        <div class="gallery-item"><img src="./1.jpg" alt="Collage Image 1"></div>
-        <div class="gallery-item"><img src="./2.jpg" alt="Collage Image 2"></div>
-        <div class="gallery-item"><img src="./3.jpg" alt="Collage Image 3"></div>
-        <div class="gallery-item"><img src="./4.jpg" alt="Collage Image 4"></div>
-        <div class="gallery-item"><img src="./5.jpg" alt="Collage Image 5"></div>
-    </div>
+<div class="collage" id="collage"></div>
 
+<script>
+  const collage = document.getElementById("collage");
+  const totalImages = 36; // number of images in your folder
+
+  for (let i = 1; i <= totalImages; i++) {
+    const img = document.createElement("img");
+    img.dataset.src = `${i}.jpg`; // store image URL in data-src
+    img.alt = `Image ${i}`;
+    img.loading = "lazy"; // native browser lazy loading fallback
+    collage.appendChild(img);
+  }
+
+  // IntersectionObserver for efficient lazy loading
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        obs.unobserve(img);
+      }
+    });
+  }, { rootMargin: "100px 0px" });
+
+  // Observe all images
+  document.querySelectorAll(".collage img").forEach(img => observer.observe(img));
+</script>
 
 </body>
 </html>
