@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add your image URLs here. You can add as many as you want.
     const imageUrls = [
-        '/web/gallery/1.JPG',
-        '/web/gallery/2.JPG',
+        './1.JPG',
+        './2.JPG',
         '/web/gallery/3.JPG',
         '/web/gallery/4.JPG',
         '/web/gallery/5.JPG',
