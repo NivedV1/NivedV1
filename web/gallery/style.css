@@ -1,0 +1,45 @@
+/* Basic page setup */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #040418; /* A dark background makes images pop */
+    color: #fff;
+    overflow: hidden; /* Hides scrollbars */
+}
+
+/* The main container for our collage */
+.gallery-container {
+    display: grid;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    padding: 20px;
+    box-sizing: border-box;
+    
+    /* Define a 4x4 grid foundation. Our items will be placed within this grid. */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 15px; /* The space between images */
+}
+
+/* Styling for each item in the gallery */
+.gallery-item {
+    overflow: hidden; /* Ensures the image doesn't spill out */
+    border-radius: 16px; /* Soft, rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    
+    /* THIS IS THE KEY TO THE SMOOTH MORPHING EFFECT! */
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Styling for the images inside the gallery items */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes images cover the div without distortion */
+    transition: transform 0.4s ease-in-out;
+}
+
+/* A subtle zoom effect on hover to make it interactive */
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
