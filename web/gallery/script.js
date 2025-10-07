@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    const UPDATE_INTERVAL_MS = 5000; // 5 seconds
+    const UPDATE_INTERVAL_MS = 35000; // 5 seconds
 
     // --- 2. SCRIPT LOGIC ---
 
