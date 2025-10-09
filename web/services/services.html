@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Links (Tailwind CSS)</title>
+    <!-- This script tag pulls in the entire Tailwind CSS library -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-blue-200 font-sans flex items-center justify-center min-h-screen p-4">
+
+    <!-- 
+      Tailwind Classes Explanation for the <body> tag:
+      - bg-gradient-to-br from-purple-100 to-blue-200: Creates a soft gradient background.
+      - min-h-screen: Ensures the gradient covers the full screen height.
+      - p-4: Adds some padding around the content on small screens.
+    -->
+
+    <!-- This div is the main container for your links -->
+    <div class="w-full max-w-lg text-center">
+        <!-- 
+          Tailwind Classes Explanation for the <div> container:
+          - w-full: Makes the container take the full width of its parent.
+          - max-w-lg: Constrains the maximum width, making it look good on larger screens.
+          - text-center: Centers all the text inside this container.
+        -->
+
+        <!-- Profile Image Placeholder -->
+        <img src="https://placehold.co/128x128/6366f1/ffffff?text=ME" alt="Profile Picture" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-md">
+
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">My Webpages</h1>
+        <p class="text-gray-600 mb-8">Welcome to my collection of sites!</p>
+
+        <!-- Link container -->
+        <div class="flex flex-col gap-4">
+            <!-- 
+                - flex flex-col: Stacks the links vertically.
+                - gap-4: Adds space between each link button.
+            -->
+
+            <!-- === MODIFY YOUR LINKS BELOW === -->
+
+            <a href="page1.html" class="block w-full bg-white p-4 rounded-full text-lg font-semibold text-purple-700 shadow-md hover:bg-purple-700 hover:text-white transition-all duration-200">
+                Link to Page 1
+            </a>
+            
+            <a href="page2.html" class="block w-full bg-white p-4 rounded-full text-lg font-semibold text-purple-700 shadow-md hover:bg-purple-700 hover:text-white transition-all duration-200">
+                Link to my Awesome Project
+            </a>
+            
+            <a href="https://www.google.com" class="block w-full bg-white p-4 rounded-full text-lg font-semibold text-purple-700 shadow-md hover:bg-purple-700 hover:text-white transition-all duration-200">
+                Link to an External Website
+            </a>
+            
+            <!-- 
+                Tailwind Classes Explanation for the <a> links:
+                - block w-full: Makes the link a full-width block element.
+                - bg-white:     Gives the button a white background.
+                - p-4:          Adds padding inside the button.
+                - rounded-full: Makes the button have fully rounded ends.
+                - text-lg font-semibold: Styles the text.
+                - text-purple-700: Sets the text color.
+                - shadow-md:    Adds a subtle shadow.
+                - hover:bg-purple-700 hover:text-white: Changes color on hover.
+                - transition-all duration-200: Makes the hover effect smooth.
+            -->
+        </div>
+
+    </div>
+
+</body>
+</html>
+
